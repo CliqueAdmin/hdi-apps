@@ -4,6 +4,7 @@ phases:
   install:
     runtime-versions:
       java: corretto8
+      docker: 18
   build:
     commands:
       - ./gradlew bootBuildImage --imageName=springio/tk-spring-boot-docker
