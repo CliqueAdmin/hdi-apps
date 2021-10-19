@@ -1,0 +1,3 @@
+rootProject.name = 'hdicode'
+include 'hdiapi'
+include 'mnappcomps'
