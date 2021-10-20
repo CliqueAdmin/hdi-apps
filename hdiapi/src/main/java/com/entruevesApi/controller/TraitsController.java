@@ -1,13 +1,13 @@
 package com.entruevesApi.controller;
 
 
-import com.entruevesApi.domain.DaggerServiceComponent;
-import com.entruevesApi.domain.ServiceComponent;
 import com.entruevesApi.domain.model.Trait;
 import com.entruevesApi.domain.services.TraitsService;
+import com.entruevesApi.hdi.DaggerServiceComponent;
 import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import  com.entruevesApi.hdi.ServiceComponent;
 
 @RestController
 public class TraitsController {

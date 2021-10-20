@@ -19,14 +19,14 @@ dependencies {
     implementation('com.google.dagger:dagger:2.27')
     annotationProcessor('com.google.dagger:dagger-compiler:2.27')
     implementation("org.mapstruct:mapstruct:1.4.2.Final")
-    implementation("com.amazonaws:aws-java-sdk-bom:1.12.68")
-    implementation("com.amazonaws:aws-java-sdk-dynamodb:1.12.68")
-    implementation("com.amazonaws:aws-java-sdk-lambda:1.12.68")
-    implementation("com.amazonaws:aws-java-sdk-stepfunctions:1.12.67")
-    implementation("com.amazonaws:aws-java-sdk-sqs:1.12.68")
-    implementation("com.google.guava:guava:27.0.1-jre")
-    implementation("com.amazonaws:aws-lambda-java-core:1.2.1")
-    implementation("com.amazonaws:aws-lambda-java-events:3.10.0")
+    implementation platform('com.amazonaws:aws-java-sdk-bom:1.11.228')
+    implementation 'com.amazonaws:aws-java-sdk-dynamodb'
+    implementation 'com.amazonaws:aws-java-sdk-lambda'
+    implementation 'com.amazonaws:aws-java-sdk-stepfunctions'
+    implementation 'com.amazonaws:aws-java-sdk-sqs'
+    implementation 'com.google.guava:guava:27.0.1-jre'
+    implementation 'com.amazonaws:aws-lambda-java-core:1.2.0'
+    implementation 'com.amazonaws:aws-lambda-java-events:2.2.7'
     implementation("org.yaml:snakeyaml:1.8")
     implementation('org.slf4j:slf4j-log4j12:1.7.29')
     implementation("log4j:log4j:1.2.17")

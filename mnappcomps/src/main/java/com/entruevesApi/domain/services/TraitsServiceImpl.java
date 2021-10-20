@@ -1,23 +1,22 @@
 package com.entruevesApi.domain.services;
 
-import com.google.common.collect.Lists;
+import com.entruevesApi.domain.dynamodb.EntrueveMetadata;
+import com.entruevesApi.domain.mapper.DtoToModelMapper;
+import com.entruevesApi.domain.model.TraitsData;
+import com.entruevesApi.domain.repositories.EntruevesMetadataRepository;
 import javax.inject.Inject;
 import lombok.NonNull;
-import com.entruevesApi.domain.model.Trait;
-import com.entruevesApi.domain.model.TraitType;
-import com.entruevesApi.domain.model.TraitsData;
 
 //import org.slf4j.Logger;
 //import org.slf4j.LoggerFactory;
 
 public class TraitsServiceImpl implements TraitsService {
 
-//  private final EntruevesMetadataRepository entruevesMetadataRepository;
+  private final EntruevesMetadataRepository entruevesMetadataRepository;
 
   @Inject
-  public TraitsServiceImpl(
-  ) {
-//    this.entruevesMetadataRepository = entruevesMetadataRepository;
+  public TraitsServiceImpl(EntruevesMetadataRepository entruevesMetadataRepository) {
+    this.entruevesMetadataRepository = entruevesMetadataRepository;
   }
 
   @Override
@@ -25,13 +24,10 @@ public class TraitsServiceImpl implements TraitsService {
       @NonNull String entrueveType) {
 //    logger.info("Retrieving traits for customerId: {}");
     //todo: #fbc
-//    EntrueveMetadata entrueveMetadata = entruevesMetadataRepository.loadRecord(entrueveType).get();
+    EntrueveMetadata entrueveMetadata = entruevesMetadataRepository.loadRecord(entrueveType).get();
 //    tempCheckSnakeYaml();
-//    return DtoToModelMapper.INSTANCE.getTraitsData(entrueveMetadata);
-    TraitsData traitsData = new TraitsData();
-    traitsData.setTraits(
-        Lists.newArrayList(Trait.builder().traitType(TraitType.Boolean).traitName("ddda").build()));
-    return traitsData;
+    return DtoToModelMapper.INSTANCE.getTraitsData(entrueveMetadata);
+
   }
 
 //  void tempCheckSnakeYaml() {
