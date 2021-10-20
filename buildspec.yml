@@ -1,6 +1,15 @@
 version: 0.2
 
 phases:
+  pre_build:
+    commands:
+      - ./gradlew
+      - echo Logging in to Amazon ECR...
+      - aws --version
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - REPOSITORY_URI=102733166919.dkr.ecr.us-west-2.amazonaws.com/hdi-images
+      - COMMIT_HASH=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
+      - IMAGE_TAG=hdiapiimg
   install:
     runtime-versions:
       java: corretto8
@@ -10,4 +19,10 @@ phases:
       - timeout 15 sh -c "until docker info; do echo .; sleep 1; done"
   build:
     commands:
-      - ./gradlew bootBuildImage --imageName=springio/tk-spring-boot-docker
+      - ./gradlew bootBuildImage --imageName=$IMAGE_TAG/tk-spring-boot-docker
+      - docker tag $IMAGE_TAG/tk-spring-boot-docker $REPOSITORY_URI:latest
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $REPOSITORY_URI:latest
