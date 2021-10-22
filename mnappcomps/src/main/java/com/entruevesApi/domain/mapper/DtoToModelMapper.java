@@ -33,7 +33,7 @@ public abstract class DtoToModelMapper {
         String[] keyVals = getAttributeKeyVal(traitAttrib);
 
         if (keyVals[0].equals("Desc")) {
-          builder.traitDescription(keyVals[1]);
+          builder.traitDescription(keyVals[1] + "-Added");
         }
 
         if (keyVals[0].equals("Type")) {
